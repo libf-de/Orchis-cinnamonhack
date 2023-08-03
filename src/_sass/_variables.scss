@@ -8,6 +8,8 @@ $blackness-asset-suffix: if($blackness == 'false' or $topbar == 'light', '', '-b
 // Sizes
 //
 
+$bar-radius: 20px;
+
 $space-size: if($compact == 'false', 6px, 4px);
 $margin-size: if($compact == 'false', 4px, 2px);
 $small-size: if($compact == 'false', 24px, 22px);

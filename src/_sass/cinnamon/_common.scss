@@ -436,6 +436,7 @@ $submenu_item_radius: $popup-radius - $space-size;
   font-weight: bold;
   height: $medium-size;
   width: $medium-size + $space-size;
+  padding: $margin-size 0 $margin-size 0;
 
   &:highlight {
     border-image: none;
@@ -444,6 +445,8 @@ $submenu_item_radius: $popup-radius - $space-size;
 
   &Left {
     spacing: 4px;
+    border-radius: $bar-radius 0 0 $bar-radius;
+    background-color: $panel;
 
     &:dnd {
       background-gradient-direction: vertical;
@@ -451,8 +454,8 @@ $submenu_item_radius: $popup-radius - $space-size;
       background-gradient-end: rgba(255,0,0,0.2);
     }
 
-    &:ltr { padding-right: 4px; }
-    &:rtl { padding-left: 4px; }
+    &:ltr { padding-right: $bar-radius; } //TODO: maybe smaller/REMOVE?
+    &:rtl { padding-left: $bar-radius; }
 
     &.vertical {
       padding: 0;
@@ -460,9 +463,17 @@ $submenu_item_radius: $popup-radius - $space-size;
       &:ltr { padding-right: 0px; }
       &:rtl { padding-left: 0px; }
     }
+
+    & .applet-box {
+      padding-bottom: $margin-size * 2;
+      margin-bottom: $margin-size * 2;
+    }
   }
 
   &Right {
+    border-radius: 0 $bar-radius $bar-radius 0;
+    background-color: $panel;
+
     &:dnd {
       background-gradient-direction: vertical;
       background-gradient-start: rgba(0,0,255,0.05);
@@ -482,6 +493,7 @@ $submenu_item_radius: $popup-radius - $space-size;
 
   &Center {
     spacing: 4px;
+    background-color: $panel;
 
     &:dnd {
       background-gradient-direction: vertical;
@@ -496,7 +508,8 @@ $submenu_item_radius: $popup-radius - $space-size;
     color: on($panel-solid, secondary);
     font-size: 1em;
     padding: 0px;
-    background-color: $panel;
+    margin: 0 $margin-size 0 $margin-size;
+    background-color: transparent;
     box-shadow: 0 0 5px rgba(#000, 0.5), 0 0 16px rgba(#000, 0.24);
 
     .panel-button,
@@ -1775,10 +1788,10 @@ $submenu_item_radius: $popup-radius - $space-size;
   &-item-box {
     font-weight: normal;
     transition-duration: 100ms;
-    border: none;
+    /*border: none;*/ //TODO: Maybe remove
     margin: 0;
     color: rgba(on($panel-solid, secondary), 0.6);
-    border-radius: 0;
+    /*border-radius: 0;*/ //TODO: Maybe remove
     spacing: $space-size;
     border-bottom: 2px solid transparent;
 
@@ -1789,28 +1802,35 @@ $submenu_item_radius: $popup-radius - $space-size;
     &:hover {
       color: on($panel-solid, secondary);
       background-gradient-direction: none;
-      background-color: rgba(on($panel-solid, secondary), 0.15);
+      /*background-color: rgba(on($panel-solid, secondary), 0.15);*/ //TODO: Do dynamically?
+      background-image: url("assets/winhack_hover.png");
     }
 
     &:active {
       color: on($panel-solid, secondary);
       background-gradient-direction: none;
-      background-color: transparent;
-      border-color: on($panel, track);
+      /*background-color: transparent;
+      border-color: on($panel, track);*/
+      padding-bottom: $margin-size * 2;
+      margin-bottom: $margin-size * 2;
+      background-image: url("assets/winhack_active.png"); //TODO
 
       &:hover {
-        background-color: rgba(on($panel-solid, secondary), 0.15);
+        /*background-color: rgba(on($panel-solid, secondary), 0.15);*/
+        background-image: url("assets/winhack_hover.png"); //TODO
       }
     }
 
     &:focus {
       color: on($panel-solid, secondary);
       background-gradient-direction: none;
-      background-color: rgba(on($panel-solid, secondary), 0.2);
-      border-color: $primary;
+      /*background-color: rgba(on($panel-solid, secondary), 0.2);
+      border-color: $primary;*/
+      background-image: url("assets/winhack_focus.png"); //TODO
 
       &:hover {
-        background-color: rgba(on($panel-solid, secondary), 0.3);
+        /*background-color: rgba(on($panel-solid, secondary), 0.3);*/
+        background-image: url("assets/winhack_focushover.png"); //TODO
       }
     }
 
@@ -2110,13 +2130,17 @@ $submenu_item_radius: $popup-radius - $space-size;
     transition-duration: 100ms;
     border-radius: 0;
 
+    &:first-child:hover {
+      background-image: url("assets/menuhack_hover.png"); //TODO
+    }
+
     &.vertical {
       padding: $space-size 0;
     }
 
     &:hover {
       color: on($panel-solid, secondary);
-      background-color: rgba(on($panel-solid, secondary), 0.15);
+      /*background-color: rgba(on($panel-solid, secondary), 0.15);*/ //TODO
     }
 
     &:checked, &:checked:hover {
